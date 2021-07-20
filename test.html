@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="div1" onClick="handleClick"></div>
+  <script>
+    var div1 = document.getElementById('div1');
+    // console.log(div1.attributes);
+    // console.log(div1.attributes.value);
+
+    function delayRestore() {
+      return new Promise(resolve => {
+        let timer = setInterval(() => {
+          if (window.base) {
+            clearInterval(timer);
+            resolve();
+          }
+        }, 10);
+      })
+    }
+
+    setTimeout(() => {
+      window.base = 1
+    }, 5000);
+
+    async function fn() {
+      console.log(0)
+      if (false) {
+        await delayRestore();
+      }
+      console.log(1)
+    }
+
+    fn();
+  </script>
+</body>
+</html>
