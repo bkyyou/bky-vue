@@ -32,8 +32,9 @@ methodsToPatch.forEach(method => {
           break;
       }
       // 如果数组有新增的元素，则对新增的元素进行响应式处理
-      inserted.length && this.__ob__.observeArray(inserted)
+      inserted.length && this.__ob__.observeArray(inserted) // todo 我在实例化一个 observer 呢？
       // 依赖通知更新
+      // debugger
       this.__ob__.dep.notify()
       return ret
     },

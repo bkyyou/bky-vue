@@ -11,7 +11,7 @@ export default function Observer(value) {
   // 为对象本身设置一个 dep，方便在更新对象本身时使用，比如 数组通知依赖更新时就会用到
   this.dep = new Dep()  
   Object.defineProperty(value, '__ob__', {
-    value: this,
+    value: this, // Observer 这个是给
     enumerable: false,
     writable: true,
     configurable: true

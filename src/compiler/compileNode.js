@@ -10,6 +10,7 @@ import compileAttribute from './compileAttribute.js';
 export default function compileNode(nodes, vm) {
   for (let i = 0, len = nodes.length; i < nodes.length; i++) {
     const node = nodes[i]
+    console.log('node', node, node.nodeType)
     if (node.nodeType === 1) { // 元素节点
       // 编译元素上的属性节点
       compileAttribute(node, vm);

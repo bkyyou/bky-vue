@@ -11,7 +11,7 @@ export default function compileTextNode(node, vm) {
   // 当响应式数据 key 更新时， dep 通知 watcher 执行 update 函数， cb 会被调用
   function cb() {
     console.log(1)
-    node.textContent = JSON.stringify(vm[key]);
+    node.textContent = JSON.stringify(vm[key]); // 触发get 
   }
   // 实例化 Watcher， 执行 cb， 触发 getter， 进行依赖收集
   new Watcher(cb);
