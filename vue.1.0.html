@@ -11,6 +11,7 @@
     <h3 id="title">数据响应式更新 原理</h3>
     <div>{{ t }}</div>
     <div>{{ t1 }}</div>
+    <!-- <div>{{ t1.tt2.tt3 }}</div> -->
     <div>{{ arr }}</div>
     <h3>methods + 事件 + 数据响应式更新 原理</h3>
     <div>
@@ -47,7 +48,10 @@
           // 原始值和对象的响应式原理
           t: 't value',
           t1: {
-            tt1: 'tt1 value'
+            tt1: 'tt1 value',
+            tt2: {
+              tt3: 1
+            }
           },
           // 数组的响应式原理
           arr: [1, 2, 3],
@@ -73,26 +77,26 @@
     })
     // console.log('ins', ins);
     // 数据响应式拦截
-    setTimeout(() => {
-      console.log('********** 属性值为原始值时的 getter、setter ************')
-      console.log(ins.t)
-      ins.t = 'change t value'
-      console.log(ins.t)
-    }, 1000)
+    // setTimeout(() => {
+    //   console.log('********** 属性值为原始值时的 getter、setter ************')
+    //   console.log(ins.t)
+    //   ins.t = 'change t value'
+    //   console.log(ins.t)
+    // }, 1000)
 
-    setTimeout(() => {
-      console.log('********** 属性的新值为对象的情况 ************')
-      ins.t = {
-        tt: 'tt value'
-      }
-      console.log(ins.t.tt)
-    }, 2000)
+    // setTimeout(() => {
+    //   console.log('********** 属性的新值为对象的情况 ************')
+    //   ins.t = {
+    //     tt: 'tt value'
+    //   }
+    //   console.log(ins.t.tt)
+    // }, 2000)
 
-    setTimeout(() => {
-      console.log('********** 验证对深层属性的 getter、setter 拦截 ************')
-      ins.t1.tt1 = 'change tt1 value'
-      console.log(ins.t1.tt1)
-    }, 3000)
+    // setTimeout(() => {
+    //   console.log('********** 验证对深层属性的 getter、setter 拦截 ************')
+    //   ins.t1.tt1 = 'change tt1 value'
+    //   console.log(ins.t1.tt1)
+    // }, 3000)
 
     // setTimeout(() => {
     //   console.log('********** 将值为对象的属性更新为原始值 ************')
@@ -107,6 +111,11 @@
     //   ins.arr.push(4)
     //   console.log(ins.arr)
     // }, 5000)
+    
+    setTimeout(() => {
+      console.log('********** 数组操作方法的拦截 ************')
+      ins.t1.tt2.tt3 = 2;
+    }, 5000)
   </script>
 </body>
 
